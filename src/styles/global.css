@@ -37,8 +37,8 @@ img {
     --fs-l: 1.5rem;
     --fs-xl: 2rem;
 
-    --c-bg1: #161718;
-    --c-bg2: #fefdff;
+    --black: #161718;
+    --white: #fefdff;
 
     --border-radius: .25rem;
     --border-radius-xl: 1rem;
