@@ -1,0 +1,48 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+:root {
+    --s_2: .2rem;
+    --s_1: .5rem;
+    --s1: 1rem;
+    --s2: 1.2rem;
+    --s3: 1.5rem;
+    --s4: 2rem;
+
+    --fs-s: .8rem;
+    --fs-m: 1rem;
+    --fs-l: 1.5rem;
+    --fs-xl: 2rem;
+
+    --c-bg1: #161718;
+    --c-bg2: #fefdff;
+
+    --border-radius: .25rem;
+    --border-radius-xl: 1rem;
+
+    --maxContent: 60rem;
+    --defaultShadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
