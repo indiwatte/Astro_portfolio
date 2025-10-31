@@ -1,5 +1,8 @@
 ---
+import "../styles/global.css";
+import "../styles/reset.css";
 const { title } = Astro.props;
+import Header from "../components/Header.astro";
 ---
 
 <html lang="en">
@@ -13,12 +16,7 @@ const { title } = Astro.props;
 
     <body>
         <main>
-            <h1>Hi, I’m Indi Watte</h1>
-            <h2>DEVINE student at howest</h2>
-            <p>
-                Welcome to my portfolio — explore my projects, experiments, and
-                ideas.
-            </p>
+            <Header />
             <slot />
         </main>
     </body>
