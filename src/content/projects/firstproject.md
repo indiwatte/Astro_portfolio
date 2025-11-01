@@ -1,6 +1,6 @@
 ---
-title: "First Project"
-description: "This will be a description for my first project."
+title: "My First Project"
+slug: "firstproject"
 ---
 
-This will be a description for my first project.
+This is the description for my first project.
