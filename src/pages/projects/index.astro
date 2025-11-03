@@ -3,12 +3,13 @@ import { getCollection } from "astro:content";
 const projects = await getCollection("projects");
 ---
 
+<!-- Making a list of all projects -->
 <h1>Projects</h1>
 <ul>
     {
-        projects.map((project) => (
+        projects.map((project /*Link to the project’s own page  */) => (
             <li>
-                <a href={`/projects/${project.slug}`}>{project.data.title}</a>
+                <a href={`/projects/${project.slug}`}>{project.data.title}</a>.{/* Show the title from the markdown file */}
             </li>
         ))
     }
