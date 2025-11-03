@@ -3,62 +3,214 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Indi Watte | Home">
+	<section class="hero">
+		<h1 class="title">portfolio</h1>
+		<img
+			src="/src/assets/images/indi.jpeg"
+			alt="Photo of Indi"
+			class="intro-image"
+		/>
+	</section>
+
 	<section class="introduction">
+		<p class="tagline">Hi, I’m Indi Watte — a DEVINE student at Howest.</p>
+		<p class="intro-text">
+			Welcome to my portfolio — explore my projects, experiments, and
+			ideas.
+		</p>
+	</section>
+
+	<section class="devine-explanation">
 		<h2>Welcome to my playground!</h2>
 		<p>
-			I’m Indi Watte, a DEVINE student at Howest passionate about design,
-			development, and interactive experiences.
+			Digital Design & Development is all about combining creativity with
+			technology — crafting beautiful, functional digital experiences. It
+			brings together design, coding, and storytelling to build websites,
+			apps, and interactive projects that don’t just look good but also
+			feel right to use. It’s where visual design meets smart development
+			to create meaningful digital products.
 		</p>
-		<p>
-			Explore my portfolio and see my projects that combine creativity and
-			technology.
-		</p>
-		<button>View all projects</button>
 	</section>
+
+	<a href="/projects" class="view-button">View all projects</a>
 
 	<section class="featured-projects">
 		<h2>Featured Projects</h2>
-		<p>
-			I love experimenting with web design, animation, visuals and
-			creative coding. These projects highlight some of my favorite ideas
-			and works so far.
-		</p>
+
+		<!-- Horizontal scroll area -->
+		<div class="featured-scroll" role="list">
+			<article class="card" role="listitem">
+				<h3 class="card-title">Project One</h3>
+				<p class="card-description">
+					Short description of project one — a quick preview.
+				</p>
+			</article>
+
+			<article class="card" role="listitem">
+				<h3 class="card-title">Project Two</h3>
+				<p class="card-description">
+					Short description of project two — a quick preview.
+				</p>
+			</article>
+
+			<article class="card" role="listitem">
+				<h3 class="card-title">Project Three</h3>
+				<p class="card-description">
+					Short description of project three — a quick preview.
+				</p>
+			</article>
+		</div>
 	</section>
 
 	<style>
+		:root {
+			--orange: orange;
+			--pink: #ff69b4;
+			--black: #000;
+			--white: #fff;
+		}
+
+		body {
+			background-color: var(--black);
+			color: var(--white);
+			font-family:
+				system-ui,
+				-apple-system,
+				"Segoe UI",
+				Roboto,
+				sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.hero {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 4rem 1rem;
+			text-align: center;
+		}
+
+		.title {
+			font-size: 15rem;
+			text-transform: uppercase;
+			text-decoration: underline;
+			text-decoration-color: var(--orange);
+			margin-bottom: -5rem;
+			z-index: 1;
+		}
+
+		.intro-image {
+			width: 250px;
+			height: 250px;
+			border-radius: 50%;
+			object-fit: cover;
+			z-index: 2;
+		}
+
 		h2 {
 			font-weight: 800;
-			font-size: var(--s3);
+			font-size: 3rem;
+			text-transform: uppercase;
+			margin: 0 0 1rem 0;
 		}
 
 		p {
-			max-width: 30rem;
-			line-height: 1.2rem;
-			padding-left: 2rem;
+			font-size: 1.2rem;
+			line-height: 1.6rem;
+			max-width: 800px;
 		}
 
 		.introduction,
+		.devine-explanation,
 		.featured-projects {
 			display: flex;
-			flex-direction: column; /* stack elements vertically */
-			align-items: left; /* center them horizontally */
-			gap: 1rem; /* space between title, text, and button */
-			padding: 3rem 2rem;
+			flex-direction: column;
+			align-items: flex-start;
+			text-align: left;
+			padding: 3rem 1rem;
+			gap: 1rem;
+			border-top: 1px solid #333;
 		}
 
-		.introduction button {
+		.introduction {
+			border-top: none;
+			padding-top: 2rem;
+		}
+
+		.introduction h2 {
+			color: var(--orange);
+		}
+
+		.devine-explanation h2 {
+			color: var(--orange);
+		}
+
+		.featured-projects h2 {
+			color: var(--pink);
+		}
+
+		.view-button {
 			background-color: var(--white);
 			color: var(--black);
-			border: none;
 			padding: 0.75rem 1.5rem;
+			text-decoration: none;
 			border-radius: 0.5rem;
-			font-size: 1rem;
+			margin: 2rem;
+			font-weight: bold;
 			max-width: fit-content;
-			
+			display: inline-block;
 		}
 
-		.introduction button:hover {
-			background-color: hotpink;
+		.view-button:hover {
+			background-color: var(--orange);
+			color: var(--white);
+		}
+
+		/* ---------- HORIZONTAL SCROLL STYLES ---------- */
+
+		.featured-scroll {
+			display: flex;
+			flex-direction: row;
+			gap: 1rem;
+			overflow-x: auto;
+			padding: 1rem 0;
+			scroll-snap-type: x mandatory; /* optional snap */
+			-webkit-overflow-scrolling: touch;
+		}
+
+		/* Each card takes up the viewport width but leaves a small gap.
+		   Use min-width: 90vw for a little peek of the next card, or 100vw for full-bleed */
+		.card {
+			flex: 0 0 90vw; /* do not shrink, fixed to 90% of viewport width */
+			height: 400px;
+			background-image: url("/src/assets/images/work1.jpeg");
+			background-size: cover; /* makes image fill the card */
+			background-repeat: no-repeat;
+			background-position: top;
+			border: 1px solid #222;
+			padding: 1.25rem;
+			box-sizing: border-box;
+			border-radius: 8px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.card + .card {
+			/* small visual separation handled by gap already */
+		}
+
+		.card-title {
+			font-size: 1.4rem;
+			margin: 0 0 0.5rem 0;
+		}
+
+		.card-description {
+			margin: 0;
+			color: var(--pink);
+			font-size: 1rem;
 		}
 	</style>
 </BaseLayout>

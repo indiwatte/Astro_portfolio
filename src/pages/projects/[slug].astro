@@ -1,20 +1,26 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection } from "astro:content"; /* This gets a list of all your project markdown files */
 
 export async function getStaticPaths() {
-    const projects = await getCollection("projects");
+    const projects =
+        await getCollection(
+            "projects",
+        ); /* Astro will make one page for every project */
     return projects.map((p) => ({
         params: { slug: p.slug },
         props: { project: p },
     }));
 }
 
+/* Get the project that belongs to this page */
 const { project } = Astro.props;
 ---
 
 <article>
+    <!--  Display the project's title from the markdown -->
     <h1>{project.data.title}</h1>
+    <p>{project.data.description}</p>
     <p><em>{project.data.date}</em></p>
-    <!-- Use set:html instead of innerHTML -->
+    <!--  Renders the markdown content as HTML -->
     <div set:html={project.body} />
 </article>
