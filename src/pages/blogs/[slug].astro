@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const blogs = await getCollection("blogs");
+    return blogs.map((b) => ({
+        params: { slug: b.id.replace(".md", "") },
+        props: { blog: b },
+    }));
+}
+
+const { blog } = Astro.props;
+---
+
+<article>
+    <h1>{blog.data.title}</h1>
+    <p>{blog.data.description}</p>
+    <p><em>{blog.data.date}</em></p>
+
+    <div set:html={blog.body} />
+</article>

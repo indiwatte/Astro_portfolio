@@ -1,24 +1,26 @@
 ---
 import { getCollection } from "astro:content";
-const projects = await getCollection("projects");
+const blogs = await getCollection("blogs");
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Indi Watte | Projects">
-    <h1>Projects</h1>
+<BaseLayout title="Indi Watte | Blogs">
+    <h1>Blogs</h1>
 
-    <ul class="project-list">
+    <ul class="blog-list">
         {
-            projects.map((project) => (
-                <li class="project-item">
-                    <a <a href={`/projects/${project.id.replace('.md', '')}`} class="project-link">
-                        <h2 class="project-title">{project.data.title}</h2>
+            blogs.map((blog) => (
+                <li class="blog-item">
+                    <a <a href={`/blogs/${blog.id.replace('.md', '')}`} class="blog-link"> {/* id.replace('.md', '') creates a usable slug from the filename. */}
+                        <h2 class="blog-title">{blog.data.title}</h2>
                     </a>
-                    <p class="description">{project.data.description}</p>
-                    <p class="date">{project.data.date}</p>
+                    <p class="description">{blog.data.description}</p>
+                    <p class="date">{blog.data.date}</p>
                 </li>
             ))
         }
+
+        {console.log(blogs)}
     </ul>
 
     <style>
@@ -43,25 +45,25 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             color: #fff;
         }
 
-        .project-list {
+        .blog-list {
             list-style: none;
             padding: 0;
             margin: 2rem auto;
             max-width: 700px;
         }
 
-        .project-item {
+        .blog-item {
             margin-bottom: 2rem;
             border-bottom: 1px solid #333;
             padding-bottom: 1rem;
         }
 
-        .project-link {
+        .blog-link {
             text-decoration: none;
             color: #fff;
         }
 
-        .project-link h2 {
+        .blog-link h2 {
             font-size: 1.4rem;
             margin: 0 0 0.5rem;
         }
