@@ -4,6 +4,7 @@ import "../styles/reset.css";
 const { title } = Astro.props;
 import Header from "../components/Header.astro";
 import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro"
 ---
 
 <html lang="en">
@@ -26,6 +27,7 @@ import Nav from "../components/Nav.astro";
             <Nav />
             <Header />
             <slot />
+            <Footer />
         </main>
     </body>
 </html>
