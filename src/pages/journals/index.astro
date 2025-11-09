@@ -1,26 +1,37 @@
 ---
 import { getCollection } from "astro:content";
-const blogs = await getCollection("blogs");
+const journals = await getCollection("journals");
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Indi Watte | Blogs">
-    <h1>Blogs</h1>
+<BaseLayout title="Indi Watte | Mind Drops">
+    <h1>Mind-drops</h1>
+    <p class="intro-description">
+        Welcome to My Mind Drops, a collection of small sparks of inspiration,
+        insights, and ideas I collect daily. Here you’ll find quotes,
+        reflections, and thoughts to fuel creativity, learning, and growth, one
+        drop at a time.
+    </p>
 
     <ul class="blog-list">
         {
-            blogs.map((blog) => (
+            journals.map((journal) => (
                 <li class="blog-item">
-                    <a <a href={`/blogs/${blog.id.replace('.md', '')}`} class="blog-link"> {/* id.replace('.md', '') creates a usable slug from the filename. */}
-                        <h2 class="blog-title">{blog.data.title}</h2>
+                    <a
+                        href={`/journals/${journal.id.replace(".md", "")}`}
+                        class="blog-link"
+                    >
+                        {" "}
+                        {/* id.replace('.md', '') creates a usable slug from the filename. */}
+                        <h2 class="blog-title">{journal.data.title}</h2>
                     </a>
-                    <p class="description">{blog.data.description}</p>
-                    <p class="date">{blog.data.date}</p>
+                    <p class="description">{journal.data.description}</p>
+                    <p class="date">{journal.data.date}</p>
                 </li>
             ))
         }
 
-        {console.log(blogs)}
+        {console.log(journals)}
     </ul>
 
     <style>
@@ -38,11 +49,20 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             padding: 0;
         }
 
-        h1 {
+        h1,
+        .intro-description {
             text-align: center;
             margin-top: 2rem;
-            font-size: 2rem;
             color: #fff;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .intro-description {
+            max-width: 600px;
+            margin: 2rem auto;
         }
 
         .blog-list {

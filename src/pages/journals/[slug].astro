@@ -1,24 +1,41 @@
 ---
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const blogs = await getCollection("blogs");
-    return blogs.map((b) => ({
+    const journals = await getCollection("journals");
+    return journals.map((b) => ({
         params: { slug: b.id.replace(".md", "") },
-        props: { blog: b },
+        props: { journal: b },
     }));
 }
 
-const { blog } = Astro.props;
+const { journal } = Astro.props;
 ---
 
-<article>
-    <h1>{blog.data.title}</h1>
-    <p>{blog.data.description}</p>
-    <p><em>{blog.data.date}</em></p>
+<BaseLayout title={journal.data.title}>
+    <article>
+        <h1>{journal.data.title}</h1>
 
-    <div set:html={blog.body} />
-</article>
+        {
+            journal.data.image && (
+                <img src={journal.data.image} alt={journal.data.title} />
+            )
+        }
+
+        <p>{journal.data.description}</p>
+
+        {
+            journal.data.date && (
+                <p>
+                    <em>{journal.data.date}</em>
+                </p>
+            )
+        }
+
+        <div set:html={journal.body} />
+    </article>
+</BaseLayout>
 
 <style>
     /* Page background + base text color */
@@ -46,11 +63,6 @@ const { blog } = Astro.props;
     /* Basic spacing for normal text */
     article p {
         margin-bottom: 1rem;
-    }
-
-    /* Date styling */
-    article em {
-        opacity: 0.7;
     }
 
     /* Markdown content (inside blog.body) */

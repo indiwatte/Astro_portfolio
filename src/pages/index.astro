@@ -46,15 +46,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					<p class="card-description">
 						My first game making experience
 					</p>
+					<a class="card-button" href="/projects/click-game"
+						>View Project</a
+					>
 				</div>
 			</article>
 
 			<article class="card card2" role="listitem">
 				<div class="text-bg">
-					<h3 class="card-title">Project Two</h3>
+					<h3 class="card-title">Thrive Campaign</h3>
 					<p class="card-description">
-						Short description of project two — a quick preview.
+						I designed a campaign website for Thrive Belgium
 					</p>
+					<a class="card-button" href="/projects/thrive-campaign"
+						>View Project</a
+					>
 				</div>
 			</article>
 
@@ -64,6 +70,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					<p class="card-description">
 						Short description of project three — a quick preview.
 					</p>
+					<a class="card-button" href="/projects/third-project"
+						>View Project</a
+					>
 				</div>
 			</article>
 		</div>
@@ -90,11 +99,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			padding: 0;
 		}
 
-		.text-bg {
+		/* 	.text-bg {
 			background-color: white;
 			max-width: fit-content;
 			padding: 1rem;
-		}
+		} */
 
 		.hero {
 			display: flex;
@@ -169,7 +178,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		.featured-projects h2 {
 			color: var(--pink);
 		}
-		.button {
+		.button,
+		.card-button {
 			display: inline-block;
 			padding: 0.6rem 1.2rem;
 			background: #fff;
@@ -177,11 +187,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			text-decoration: none;
 			font-weight: 600;
 			border-radius: 4px;
+			margin: 2rem;
 		}
 
-		.button:hover {
+		.button,
+		.card-button:hover {
 			background: hotpink;
 		}
+
 		/* ---------- HORIZONTAL SCROLL STYLES ---------- */
 
 		.featured-scroll {
@@ -200,10 +213,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		.card1 {
 			flex: 0 0 90vw; /* do not shrink, fixed to 90% of viewport width */
 			height: 400px;
-			background-image: url("/src/assets/images/gameproject.jpg");
-			background-size: cover; /* makes image fill the card */
+			background-image: url("/assets/images/placeholder.png");
+			background-size: 40%;
 			background-repeat: no-repeat;
-			background-position: top;
+			background-position: center;
 			border: 1px solid #222;
 			padding: 1.25rem;
 			box-sizing: border-box;
@@ -211,13 +224,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-		}
-
-		.card2 {
-			background-image: url("/src/assets/images/bra-project.png");
-			background-size: cover; /* makes image fill the card */
-			background-repeat: no-repeat;
-			background-position: top;
 		}
 
 		.card + .card {
