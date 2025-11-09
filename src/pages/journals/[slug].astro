@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import DetailLayout from "../../layouts/DetailLayout.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -13,89 +13,22 @@ export async function getStaticPaths() {
 const { journal } = Astro.props;
 ---
 
-<BaseLayout title={journal.data.title}>
-    <article>
-        <h1>{journal.data.title}</h1>
-
-        {
-            journal.data.image && (
-                <img src={journal.data.image} alt={journal.data.title} />
-            )
-        }
-
-        <p>{journal.data.description}</p>
-
-        {
-            journal.data.date && (
-                <p>
-                    <em>{journal.data.date}</em>
-                </p>
-            )
-        }
-
-        <div set:html={journal.body} />
-    </article>
-</BaseLayout>
-
-<style>
-    /* Page background + base text color */
-    body {
-        background: #000;
-        color: #fff;
+<DetailLayout title={journal.data.title}>
+    {
+        journal.data.image && (
+            <img src={journal.data.image} alt={journal.data.title} />
+        )
     }
 
-    /* Article layout */
-    article {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem;
-        font-family: "Inter", sans-serif;
-        line-height: 1.6;
+    <p>{journal.data.description}</p>
+
+    {
+        journal.data.date && (
+            <p>
+                <em>{journal.data.date}</em>
+            </p>
+        )
     }
 
-    /* Title */
-    article h1 {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-    }
-
-    /* Basic spacing for normal text */
-    article p {
-        margin-bottom: 1rem;
-    }
-
-    /* Markdown content (inside blog.body) */
-    article div > * {
-        margin-bottom: 1rem;
-    }
-
-    /* Headings inside markdown */
-    article h2 {
-        font-size: 1.6rem;
-        margin-top: 2rem;
-    }
-
-    article h3 {
-        font-size: 1.3rem;
-        margin-top: 1.5rem;
-    }
-
-    /* Lists */
-    article ul,
-    article ol {
-        padding-left: 1.2rem;
-    }
-
-    article li {
-        margin-bottom: 0.4rem;
-    }
-
-    /* Images inside posts */
-    article img {
-        width: 100%;
-        max-width: 100%;
-        border-radius: 4px;
-        margin: 1.5rem 0;
-    }
-</style>
+    <div set:html={journal.body} />
+</DetailLayout>

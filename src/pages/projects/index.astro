@@ -1,18 +1,20 @@
 ---
 import { getCollection } from "astro:content";
+import OverviewLayout from "../../layouts/OverviewLayout.astro";
+
 const projects = await getCollection("projects");
-import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Indi Watte | Projects">
-    <h1>Projects</h1>
-
-    <ul class="project-list">
+<OverviewLayout
+    title="Projects"
+    intro="Welcome to My Project overview, a collection of my works of my DEVINE journey"
+    >
+    <ul class="list">
         {
             projects.map((project) => (
-                <li class="project-item">
-                    <a <a href={`/projects/${project.id.replace('.md', '')}`} class="project-link">
-                        <h2 class="project-title">{project.data.title}</h2>
+                <li>
+                    <a href={`/projects/${project.id.replace(".md", "")}`}>
+                        <h2>{project.data.title}</h2>
                     </a>
                     <p class="description">{project.data.description}</p>
                     <p class="date">{project.data.date}</p>
@@ -20,61 +22,4 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             ))
         }
     </ul>
-
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family:
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 2rem;
-            color: #fff;
-        }
-
-        .project-list {
-            list-style: none;
-            padding: 0;
-            margin: 2rem auto;
-            max-width: 700px;
-        }
-
-        .project-item {
-            margin-bottom: 2rem;
-            border-bottom: 1px solid #333;
-            padding-bottom: 1rem;
-        }
-
-        .project-link {
-            text-decoration: none;
-            color: #fff;
-        }
-
-        .project-link h2 {
-            font-size: 1.4rem;
-            margin: 0 0 0.5rem;
-        }
-
-        .description {
-            color: #ff69b4;
-            font-size: 1rem;
-            margin: 0.3rem 0;
-        }
-
-        .date {
-            color: #ccc;
-            font-size: 0.9rem;
-        }
-    </style>
-</BaseLayout>
+</OverviewLayout>
