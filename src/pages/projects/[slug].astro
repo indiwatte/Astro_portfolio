@@ -1,4 +1,5 @@
 ---
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content"; /* This gets a list of all your project markdown files */
 
 export async function getStaticPaths() {
@@ -16,14 +17,22 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 ---
 
-<article>
-    <!--  Display the project's title from the markdown -->
-    <h1>{project.data.title}</h1>
-    <p>{project.data.description}</p>
-    <p><em>{project.data.date}</em></p>
-    <!--  Renders the markdown content as HTML -->
-    <div set:html={project.body} />
-</article>
+<BaseLayout title={project.data.title}>
+    <article>
+        <h1>{project.data.title}</h1>
+
+        {
+            project.data.image && (
+                <img src={project.data.image} alt={project.data.title} />
+            )
+        }
+
+        <p>{project.data.description}</p>
+        <p><em>{project.data.date}</em></p>
+
+        <div set:html={project.body} />
+    </article>
+</BaseLayout>
 
 <style>
     body {
