@@ -13,17 +13,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         drop at a time.
     </p>
 
-    <ul class="blog-list">
+    <ul class="minddrop-list">
         {
             journals.map((journal) => (
-                <li class="blog-item">
+                <li class="minddrop-item">
                     <a
                         href={`/journals/${journal.id.replace(".md", "")}`}
-                        class="blog-link"
+                        class="minddrop-link"
                     >
                         {" "}
                         {/* id.replace('.md', '') creates a usable slug from the filename. */}
-                        <h2 class="blog-title">{journal.data.title}</h2>
+                        <h2 class="minddrop-title">{journal.data.title}</h2>
                     </a>
                     <p class="description">{journal.data.description}</p>
                     <p class="date">{journal.data.date}</p>
@@ -65,25 +65,25 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             margin: 2rem auto;
         }
 
-        .blog-list {
+        .minddrop-list {
             list-style: none;
             padding: 0;
             margin: 2rem auto;
             max-width: 700px;
         }
 
-        .blog-item {
+        .minddrop-item {
             margin-bottom: 2rem;
             border-bottom: 1px solid #333;
             padding-bottom: 1rem;
         }
 
-        .blog-link {
+        .minddrop-link {
             text-decoration: none;
             color: #fff;
         }
 
-        .blog-link h2 {
+        .minddrop-link h2 {
             font-size: 1.4rem;
             margin: 0 0 0.5rem;
         }
