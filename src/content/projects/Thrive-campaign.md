@@ -2,6 +2,7 @@
 title: "Thrive campaign"
 description: "This campaign project was created for Thrive Belgium"
 date: "2025-11-09"
+image: "/assets/images/placeholder.png"
 ---
 
 For this assignment, I developed a digital-first campaign concept for Thrive, an alcohol-free functional beer brand expanding beyond the sports segment. The goal was to introduce new audiences (ages 25–45) to Thrive Play and Thrive Unwind IPA through an engaging online experience and a strong creative hook.

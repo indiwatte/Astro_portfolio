@@ -2,7 +2,10 @@
 title: "Rocket click game"
 description: "My second coding assignment in the second year DEVINE was making a click based game"
 date: "2025-05-04"
+image: "/assets/images/placeholder.png"
 ---
+
+
 
 Description:
 
