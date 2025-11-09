@@ -1,0 +1,42 @@
+---
+const {
+    title = "Get in Touch",
+    buttonText = "Contact Me",
+    href = "/contact",
+} = Astro.props;
+---
+
+<section class="contact-cta">
+    <h2>{title}</h2>
+    <a class="contact-button" href={href}>{buttonText}</a>
+</section>
+
+<style>
+    .contact-cta {
+        text-align: center;
+        padding: 2rem 1rem;
+        margin: 2rem 0;
+        background: #ff69b4;
+        color: #fff;
+        border-radius: 8px;
+    }
+
+    .contact-cta h2 {
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+    }
+
+    .contact-button {
+        display: inline-block;
+        background: #fff;
+        color: #ff69b4;
+        padding: 0.8rem 2rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .contact-button:hover {
+        opacity: 0.85;
+    }
+</style>
