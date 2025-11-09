@@ -1,102 +1,25 @@
 ---
 import { getCollection } from "astro:content";
+import OverviewLayout from "../../layouts/OverviewLayout.astro";
+
 const journals = await getCollection("journals");
-import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Indi Watte | Mind Drops">
-    <h1>Mind-drops</h1>
-    <p class="intro-description">
-        Welcome to My Mind Drops, a collection of small sparks of inspiration,
-        insights, and ideas I collect daily. Here you’ll find quotes,
-        reflections, and thoughts to fuel creativity, learning, and growth, one
-        drop at a time.
-    </p>
-
-    <ul class="minddrop-list">
+<OverviewLayout
+    title="Mind Drops"
+    intro="Welcome to My Mind Drops, a collection of inspiration and reflections."
+>
+    <ul class="list">
         {
             journals.map((journal) => (
-                <li class="minddrop-item">
-                    <a
-                        href={`/journals/${journal.id.replace(".md", "")}`}
-                        class="minddrop-link"
-                    >
-                        {" "}
-                        {/* id.replace('.md', '') creates a usable slug from the filename. */}
-                        <h2 class="minddrop-title">{journal.data.title}</h2>
+                <li>
+                    <a href={`/journals/${journal.id.replace(".md", "")}`}>
+                        <h2>{journal.data.title}</h2>
                     </a>
                     <p class="description">{journal.data.description}</p>
-                    <p class="date">{journal.data.date}</p>
+                    
                 </li>
             ))
         }
-
-        {console.log(journals)}
     </ul>
-
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family:
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1,
-        .intro-description {
-            text-align: center;
-            margin-top: 2rem;
-            color: #fff;
-        }
-
-        h1 {
-            font-size: 2rem;
-        }
-
-        .intro-description {
-            max-width: 600px;
-            margin: 2rem auto;
-        }
-
-        .minddrop-list {
-            list-style: none;
-            padding: 0;
-            margin: 2rem auto;
-            max-width: 700px;
-        }
-
-        .minddrop-item {
-            margin-bottom: 2rem;
-            border-bottom: 1px solid #333;
-            padding-bottom: 1rem;
-        }
-
-        .minddrop-link {
-            text-decoration: none;
-            color: #fff;
-        }
-
-        .minddrop-link h2 {
-            font-size: 1.4rem;
-            margin: 0 0 0.5rem;
-        }
-
-        .description {
-            color: #ff69b4;
-            font-size: 1rem;
-            margin: 0.3rem 0;
-        }
-
-        .date {
-            color: #ccc;
-            font-size: 0.9rem;
-        }
-    </style>
-</BaseLayout>
+</OverviewLayout>
