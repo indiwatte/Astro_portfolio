@@ -16,9 +16,9 @@ img {
 
 main {
     margin: 0;
-    padding: 5rem;
-    color: var(--white);
-    background-color: black;
+
+    color: var(--green);
+    background-color: var(--bg-color);
     font-family: "Inter";
     
 }
@@ -49,6 +49,10 @@ main {
 
     --black: #161718;
     --white: #fefdff;
+    --bg-color: #F6FCD6;
+    --fluo-yellow: #E9FF6C;
+    --purple: #D2ABE4;
+    --green: #474E22;
 
     --border-radius: .25rem;
     --border-radius-xl: 1rem;
