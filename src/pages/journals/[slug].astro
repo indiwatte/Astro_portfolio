@@ -1,6 +1,6 @@
 ---
 import DetailLayout from "../../layouts/DetailLayout.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
     const journals = await getCollection("journals");
@@ -11,6 +11,8 @@ export async function getStaticPaths() {
 }
 
 const { journal } = Astro.props;
+
+const { Content } = await render(journal);
 ---
 
 <DetailLayout title={journal.data.title}>
@@ -30,5 +32,5 @@ const { journal } = Astro.props;
         )
     }
 
-    <div set:html={journal.body} />
+    <Content />
 </DetailLayout>
