@@ -19,7 +19,6 @@ const { title, intro } = Astro.props;
             max-width: 700px;
             margin: 0 auto;
             padding: 2rem 1rem;
-            color: var(--white);
         }
 
         h1 {
@@ -27,16 +26,29 @@ const { title, intro } = Astro.props;
             margin-bottom: 1rem;
             font-size: 2.2rem;
             text-transform: uppercase;
-            color: var(--white);
-            
         }
 
         .intro {
             text-align: center;
             max-width: 600px;
             margin: 0 auto 2rem;
-            color: #ccc;
             line-height: 1.5;
+        }
+
+        a.link {
+            text-decoration: none;
+            font-size: 1.4rem;
+            display: inline-block;
+            padding: 0.2rem 0.4rem;
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+            color: var(--green);
+        }
+
+        a.link:hover {
+            background-color: var(--purple);
+            
         }
     </style>
 </BaseLayout>
