@@ -36,8 +36,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     <style>
         body {
-            background-color: #000;
-            color: #fff;
             font-family:
                 system-ui,
                 -apple-system,
@@ -53,7 +51,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         .intro-description {
             text-align: center;
             margin-top: 2rem;
-            color: #fff;
         }
 
         h1 {
@@ -79,8 +76,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         }
 
         .blog-link {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            background: transparent;
             text-decoration: none;
-            color: #fff;
+            color: var(--green);
+        }
+
+        .blog-link:hover {
+            background-color: var(--purple);
+            text-decoration: none;
+            transform: translateY(-2px);
         }
 
         .blog-link h2 {
@@ -89,13 +95,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         }
 
         .description {
-            color: #ff69b4;
             font-size: 1rem;
             margin: 0.3rem 0;
         }
 
         .date {
-            color: #ccc;
             font-size: 0.9rem;
         }
     </style>

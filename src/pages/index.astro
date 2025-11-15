@@ -30,9 +30,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			feel right to use. It’s where visual design meets smart development
 			to create meaningful digital products.
 		</p>
-	</section>
 
-	<a href="/projects" class="button">View all projects</a>
+		<a href="/projects" class="button">View all projects</a>
+	</section>
 
 	<section class="featured-projects">
 		<h2>Featured Projects</h2>
@@ -118,36 +118,44 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			font-size: 15rem;
 			text-transform: uppercase;
 			text-decoration: underline;
-			text-decoration-color: var(--orange);
+			text-decoration-color: var(--purple);
 			margin-bottom: -5rem;
 			z-index: 1;
 		}
 
 		.intro-image {
-			width: 250px;
-			height: 250px;
-			border-radius: 50%;
+			width: 600px;
+			height: 600px;
 			object-fit: cover;
+			position: absolute;
 			z-index: 2;
-		}
 
+			left: 70%; /* center horizontally */
+			top: 35%; /* move to top */
+			transform: translateX(-50%); /* compensate for width */
+		}
 		h2 {
 			font-weight: 800;
 			font-size: 3rem;
 			text-transform: uppercase;
 			margin: 0 0 1rem 0;
+			color: var(--green);
 		}
 
 		h3 {
 			font-weight: 800;
 			font-size: 5rem;
-			color: var(--pink);
+			color: var(--purple);
 		}
 
 		p {
 			font-size: 1.2rem;
 			line-height: 1.6rem;
 			max-width: 800px;
+		}
+
+		.devine-explanation {
+			background-color: var(--fluo-yellow);
 		}
 
 		.introduction,
@@ -165,37 +173,40 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		.introduction {
 			border-top: none;
 			padding-top: 2rem;
-		}
-
-		.introduction h2 {
-			color: var(--orange);
-		}
-
-		.devine-explanation h2 {
-			color: var(--orange);
-		}
-
-		.featured-projects h2 {
-			color: var(--pink);
+			padding: 8rem;
 		}
 		.button,
 		.card-button {
 			display: inline-block;
-			padding: 0.6rem 1.2rem;
-			background: #fff;
+			padding: 0.75rem 1.5rem;
+			background: linear-gradient(135deg, var(--purple), var(--bg-color));
 			color: #000;
 			text-decoration: none;
 			font-weight: 600;
-			border-radius: 4px;
-			margin: 2rem;
+			border-radius: 6px;
+			margin: 1.5rem;
+			transition:
+				transform 0.2s ease,
+				box-shadow 0.2s ease;
+			border: none;
+			cursor: pointer;
 		}
 
-		.button,
+		.button:hover,
 		.card-button:hover {
-			background: hotpink;
+			transform: translateY(-3px);
+			box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 		}
 
-		/* ---------- HORIZONTAL SCROLL STYLES ---------- */
+		.button:active,
+		.card-button:active {
+			transform: translateY(0);
+			box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+		}
+	</style>
+</BaseLayout>
+
+<!-- /* ---------- HORIZONTAL SCROLL STYLES ---------- */
 
 		.featured-scroll {
 			display: flex;
@@ -206,6 +217,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			scroll-snap-type: x mandatory; /* optional snap */
 			-webkit-overflow-scrolling: touch;
 		}
+
+		
 
 		/* Each card takes up the viewport width but leaves a small gap.
 		   Use min-width: 90vw for a little peek of the next card, or 100vw for full-bleed */
@@ -239,6 +252,4 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			margin: 0;
 			color: var(--pink);
 			font-size: 1rem;
-		}
-	</style>
-</BaseLayout>
+		} -->

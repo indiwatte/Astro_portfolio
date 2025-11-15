@@ -23,8 +23,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     <style>
         body {
-            background-color: #000;
-            color: #fff;
+           
+            
             font-family:
                 system-ui,
                 -apple-system,
@@ -40,7 +40,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             text-align: center;
             margin-top: 2rem;
             font-size: 2rem;
-            color: #fff;
+       
         }
 
         .project-list {
@@ -57,23 +57,27 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         }
 
         .project-link {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            background: transparent;
             text-decoration: none;
-            color: #fff;
+            color: var(--green);
         }
 
-        .project-link h2 {
-            font-size: 1.4rem;
-            margin: 0 0 0.5rem;
+        .project-link:hover {
+            background-color: var(--purple);
+            text-decoration: none;
+            transform: translateY(-2px);
         }
 
         .description {
-            color: #ff69b4;
+        
             font-size: 1rem;
             margin: 0.3rem 0;
         }
 
         .date {
-            color: #ccc;
+          
             font-size: 0.9rem;
         }
     </style>
