@@ -1,6 +1,6 @@
 ---
 import DetailLayout from "../../layouts/DetailLayout.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
     const projects = await getCollection("projects");
@@ -11,9 +11,12 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+
+// Properly render Markdown body
+const { Content } = await render(project);
 ---
 
-<BaseLayout title={project.data.title}>
+<DetailLayout title={project.data.title}>
     <article>
         <h1>{project.data.title}</h1>
 
@@ -24,45 +27,18 @@ const { project } = Astro.props;
         }
 
         <p>{project.data.description}</p>
-        <p><em>{project.data.date}</em></p>
 
-        <div set:html={project.body} />
+        {
+            project.data.date && (
+                <p>
+                    <em>{project.data.date}</em>
+                </p>
+            )
+        }
+
+        <!--Feedback: Use <Content /> instead of set:html -->
+        <Content />
     </article>
-</BaseLayout>
-
-<style>
-
-
-    /* Article layout */
-    article {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem;
-        font-family: "Inter", sans-serif;
-        line-height: 1.6;
-    }
-
-    /* Title */
-    article h1 {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-<DetailLayout title={project.data.title}>
-    {
-        project.data.image && (
-            <img src={project.data.image} alt={project.data.title} />
-        )
-    }
-
-    <p>{project.data.description}</p>
-
-    {
-        project.data.date && (
-            <p>
-                <em>{project.data.date}</em>
-            </p>
-        )
-    }
-
-    <div set:html={project.body} />
 </DetailLayout>
+
+
