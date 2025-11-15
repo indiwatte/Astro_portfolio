@@ -13,10 +13,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	</section>
 
 	<section class="introduction">
-		<p class="tagline">Hi there, I’m Indi Watte,  a DEVINE student at Howest.</p>
+		<p class="tagline">
+			Hi there, I’m Indi Watte, a DEVINE student at Howest.
+		</p>
 		<p class="intro-text">
-			Welcome to my portfolio explore my projects, experiments, and
-			ideas right here
+			Welcome to my portfolio explore my projects, experiments, and ideas
+			right here
 		</p>
 	</section>
 
@@ -76,26 +78,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			</article>
 		</div>
 	</section>
-
 	<style>
 		:root {
-			--orange: orange;
-			--pink: #ff69b4;
-			--black: #000;
-			--white: #fff;
+			/* These are used in your CSS but were missing */
+			--purple: #d2abe4;
+			--green: #474e22;
+			--fluo-yellow: #e9ff6c;
+			--bg-color: #f6fcd6;
 		}
 
 		body {
-			background-color: var(--black);
-			color: var(--white);
 			font-family:
 				system-ui,
 				-apple-system,
 				"Segoe UI",
 				Roboto,
 				sans-serif;
+			margin: 0;
 		}
 
+		/* HERO SECTION */
 		.hero {
 			display: flex;
 			flex-direction: column;
@@ -111,26 +113,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			text-decoration: underline;
 			text-decoration-color: var(--purple);
 			margin-bottom: -5rem;
-			z-index: 1;
-			min-width: auto;
+			width: fit-content; /* doesnt work */
 		}
 
+		/* IMAGE IN HERO */
 		.intro-image {
-			width: 100%;
-			max-width: 250px;
-			aspect-ratio: 1 / 1;
+			width: 50%;
 			border-radius: 50%;
 			object-fit: cover;
 			position: absolute;
 			z-index: 2;
 
-			left: 70%; /* center horizontally */
-			top: 35%; /* move to top */
-			transform: translateX(-50%); /* compensate for width */
+			left: 70%;
+			top: 35%;
+			transform: translateX(-50%);
 		}
+
+		/* HEADINGS */
 		h2 {
-			font-weight: 800;
-			font-size: 3rem;
+			font-weight: 700;
+			font-size: 2rem;
 			text-transform: uppercase;
 			margin: 0 0 1rem 0;
 			color: var(--green);
@@ -138,20 +140,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 		h3 {
 			font-weight: 800;
-			font-size: 5rem;
+			font-size: 1.5rem;
 			color: var(--purple);
 		}
 
-		p {
-			font-size: 1.2rem;
-			line-height: 1.6rem;
-			width: 100%;
-		}
-
-		.devine-explanation {
-			background-color: var(--fluo-yellow);
-		}
-
+		/* SECTIONS */
 		.introduction,
 		.devine-explanation,
 		.featured-projects {
@@ -162,23 +155,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			padding: 3rem 1rem;
 			gap: 1rem;
 			border-top: 1px solid #333;
+			width: 100%;
 		}
 
 		.introduction {
 			border-top: none;
-			padding-top: 2rem;
-			padding: 8rem;
+			padding: 8rem 1rem;
 		}
 
-		.introduction h2,
-		.devine-explanation h2 {
-			color: var(--orange);
+		.devine-explanation {
+			background-color: var(--fluo-yellow);
+			z-index: 3;
 		}
 
-		.featured-projects h2 {
-			color: var(--pink);
-		}
-
+		/* BUTTONS */
 		.button,
 		.card-button {
 			display: inline-block;
@@ -189,6 +179,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			font-weight: 600;
 			border-radius: 4px;
 			margin: 2rem 0;
+			transition:
+				transform 0.2s ease,
+				box-shadow 0.2s ease;
 		}
 
 		.button:hover,
