@@ -3,115 +3,235 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="About | Indi Watte">
-    <section class="about-me">
-        <h2>About Me</h2>
-        <p>
-            Hi, I’m Indi Watte — a DEVINE student at Howest with a passion for
-            combining design and technology to create meaningful digital
-            experiences.
-        </p>
-        <p>
-            My interests include creative coding, motion design, and exploring
-            how people interact with digital products. I enjoy experimenting
-            with tools like Astro, JavaScript, and p5.js to bring ideas to life
-            on the web.
-        </p>
+    <section class="about-me section-grid">
+        <div class="about-text">
+            <h1>Indi Watté</h1>
+            <h2>About Me</h2>
+            <p>
+                Hi, I’m Indi Watte — a DEVINE student at Howest with a passion
+                for combining design and technology to create meaningful digital
+                experiences.
+            </p>
+            <p>
+                My interests include creative coding, motion design, and
+                exploring how people interact with digital products. I enjoy
+                experimenting with tools like Astro, JavaScript, and p5.js.
+            </p>
+        </div>
 
-        <img src="/src/assets/images/indi.jpeg" alt="">
+        <img src="/src/assets/images/profiel.png" alt="" class="about-img" />
     </section>
 
-    <section>
-        <h3>Skills & Tools</h3>
-        <ul>
-            <li>HTML, CSS, JavaScript</li>
-            <li>PHP Backend Development</li>
-            <li>Astro & modern web frameworks</li>
-            <li>Creative coding with p5.js</li>
-            <li>UI/UX designing</li>
-            <li>Visual Design & Adobe Tools</li>
+    <section class="skills section-grid">
+        <h2>Skills & Tools</h2>
+        <ul class="skills-list">
+            <li>
+                <span>HTML, CSS, JavaScript</span>
+                <div class="bar">
+                    <div class="fill" style="--level:85%"></div>
+                </div>
+            </li>
+            <li>
+                <span>PHP Backend Development</span>
+                <div class="bar">
+                    <div class="fill" style="--level:60%"></div>
+                </div>
+            </li>
+            <li>
+                <span>Astro & modern frameworks</span>
+                <div class="bar">
+                    <div class="fill" style="--level:70%"></div>
+                </div>
+            </li>
+            <li>
+                <span>Creative coding with p5.js</span>
+                <div class="bar">
+                    <div class="fill" style="--level:65%"></div>
+                </div>
+            </li>
+            <li>
+                <span>UI/UX designing</span>
+                <div class="bar">
+                    <div class="fill" style="--level:90%"></div>
+                </div>
+            </li>
+            <li>
+                <span>Visual Design & Adobe Tools</span>
+                <div class="bar">
+                    <div class="fill" style="--level:80%"></div>
+                </div>
+            </li>
         </ul>
     </section>
 
-    <section>
-        <h3>What I’m currently working on</h3>
-        <p>
-            Building my personal portfolio with Astro and diving deeper into
-            responsive design is an interesting and rewarding project. It’s not
-            only a chance to explore responsiveness and sharpen my Git skills,
-            but also a way to organize and showcase two years of learning,
-            growth, challenges, creativity, and moments of both frustration and
-            satisfaction.
-        </p>
-    </section>
+    <section class="current-work"> <h2>
+        What I’m currently working on
+    </h2>
+    <p>
+        Building my personal portfolio with Astro and diving deeper into
+        responsive design...
+    </p>
 
-    <section>
-        <h3>My Work as a DEVINE student</h3>
+    <section class="student-work">
+        <h2>My Work as a DEVINE student</h2>
         <p>
             Here’s a quick look at some of my projects that explore design,
-            animation, and creative coding. Each project reflects my process of
-            learning, experimenting, and refining my work as always
+            animation, and creative coding.
         </p>
-
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-
         <a href="/projects" class="button">View All Projects</a>
     </section>
 </BaseLayout>
 
 <style>
-    /* Wrapper spacing for sections */
+    /* GLOBAL PAGE WRAPPER */
     section {
-        max-width: 800px;
+        max-width: 1000px;
         margin: 0 auto;
-        padding: 2rem 1.5rem;
+        padding: 3rem 1.5rem;
     }
 
-    /* Headings */
+    /* PAGE GRID (only where needed) */
+
+    .section-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        align-items: start;
+    }
+
+    /* Full-width sections stay centered */
+    .full-width {
+        max-width: 800px;
+    }
+
+    /* IMAGE IN INTRO */
+    .about-img {
+        width: 100%;
+        border-radius: 12px;
+        object-fit: cover;
+    }
+
+    .about-text {
+        display: grid;
+        grid-template-rows: auto auto;
+        position: relative;
+    }
+
+    /* TYPOGRAPHY */
+    h1 {
+        grid-row: 2;
+        font-size: 7rem;
+        font-family: "hello-bloomie-script", sans-serif;
+        font-weight: 400;
+        color: var(--purple);
+        margin: 0;
+        transform: translateY(-80px); /* controls overlap */
+        transform: translateX(-70px); /* controls overlap */
+        z-index: 1;
+    }
+
     h2 {
+        grid-row: 1; /* SAME GRID ROW → overlap */
         font-size: 2rem;
         font-weight: 700;
-        margin-bottom: 1rem;
+        text-transform: uppercase;
+        margin-top: 3rem; /* adjust spacing */
+        color: var(--green);
+        z-index: 1;
     }
 
     h3 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         font-weight: 600;
-        margin-top: 1.5rem;
         margin-bottom: 0.75rem;
     }
 
-    /* Paragraphs */
     p {
-        margin-bottom: 1rem;
         line-height: 1.6;
-    }
-
-    /* Lists */
-    ul {
-        padding-left: 1.2rem;
         margin-bottom: 1rem;
     }
 
-    li {
-        margin-bottom: 0.4rem;
+    .skills-list {
+        list-style: none;
+        padding: 3rem 1rem;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        gap: 2rem 4rem; /* vertical & horizontal gaps */
+        align-items: start;
+        justify-items: center; /* center items in each column */
+        background-color: var(--fluo-yellow);
+        border-radius: 12px;
+        max-width: 700px;
     }
 
-    /* Button */
-    .button {
+    /* Each skill item */
+    .skills-list li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    /* Skill label */
+    .skills-list span {
+        font-size: 0.9rem;
+        font-weight: 400;
+        text-align: left;
+        color: var(--green);
+    }
+
+    /* Bar container */
+    .bar {
+        width: 100%; /* full width of grid item */
+        max-width: 180px; /* keeps bars consistent */
+        height: 16px;
+        background: #ffffffaa;
+
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Fill bar */
+    .fill {
+        height: 100%;
+        width: var(--level);
+        background: var(--purple);
+        border-radius: inherit;
+        transition: width 0.5s ease;
+    }
+
+    /* BUTTONS */
+    .button,
+    .card-button {
         display: inline-block;
-        padding: 0.6rem 1.2rem;
-        background: #fff;
+        padding: 0.75rem 1.5rem;
+        background: linear-gradient(135deg, var(--purple), var(--bg-color));
         color: #000;
         text-decoration: none;
         font-weight: 600;
         border-radius: 4px;
+        margin: 2rem 0;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
     }
 
-    .button:hover {
-        background: hotpink;
+    .button:hover,
+    .card-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    .button:active,
+    .card-button:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .student-work{
+        padding:0;
     }
 </style>
