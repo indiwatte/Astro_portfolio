@@ -13,15 +13,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	</section>
 
 	<section class="introduction">
-		<p class="tagline">Hi, I’m Indi Watte — a DEVINE student at Howest.</p>
+		<p class="tagline">Hi there, I’m Indi Watte,  a DEVINE student at Howest.</p>
 		<p class="intro-text">
-			Welcome to my portfolio — explore my projects, experiments, and
-			ideas.
+			Welcome to my portfolio explore my projects, experiments, and
+			ideas right here
 		</p>
 	</section>
 
 	<section class="devine-explanation">
-		<h2>Welcome to my playground!</h2>
+		<h2>Introduction to my playground!</h2>
 		<p>
 			Digital Design & Development is all about combining creativity with
 			technology — crafting beautiful, functional digital experiences. It
@@ -30,9 +30,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			feel right to use. It’s where visual design meets smart development
 			to create meaningful digital products.
 		</p>
-	</section>
 
-	<a href="/projects" class="button">View all projects</a>
+		<a href="/projects" class="button">View all projects</a>
+	</section>
 
 	<section class="featured-projects">
 		<h2>Featured Projects</h2>
@@ -109,7 +109,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			font-size: 15rem;
 			text-transform: uppercase;
 			text-decoration: underline;
-			text-decoration-color: var(--orange);
+			text-decoration-color: var(--purple);
 			margin-bottom: -5rem;
 			z-index: 1;
 			min-width: auto;
@@ -121,20 +121,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			aspect-ratio: 1 / 1;
 			border-radius: 50%;
 			object-fit: cover;
+			position: absolute;
 			z-index: 2;
-		}
 
+			left: 70%; /* center horizontally */
+			top: 35%; /* move to top */
+			transform: translateX(-50%); /* compensate for width */
+		}
 		h2 {
 			font-weight: 800;
 			font-size: 3rem;
 			text-transform: uppercase;
 			margin: 0 0 1rem 0;
+			color: var(--green);
 		}
 
 		h3 {
 			font-weight: 800;
 			font-size: 5rem;
-			color: var(--pink);
+			color: var(--purple);
 		}
 
 		p {
@@ -142,6 +147,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			line-height: 1.6rem;
 			width: 100%;
 		}
+
+		.devine-explanation {
+			background-color: var(--fluo-yellow);
+		}
+
 		.introduction,
 		.devine-explanation,
 		.featured-projects {
@@ -157,6 +167,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		.introduction {
 			border-top: none;
 			padding-top: 2rem;
+			padding: 8rem;
 		}
 
 		.introduction h2,
@@ -171,8 +182,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		.button,
 		.card-button {
 			display: inline-block;
-			padding: 0.6rem 1.2rem;
-			background: #fff;
+			padding: 0.75rem 1.5rem;
+			background: linear-gradient(135deg, var(--purple), var(--bg-color));
 			color: #000;
 			text-decoration: none;
 			font-weight: 600;
@@ -182,10 +193,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 		.button:hover,
 		.card-button:hover {
-			background: hotpink;
+			transform: translateY(-3px);
+			box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 		}
 
-		/* ---------- HORIZONTAL SCROLL STYLES ---------- */
+		.button:active,
+		.card-button:active {
+			transform: translateY(0);
+			box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+		}
+	</style>
+</BaseLayout>
+
+<!-- /* ---------- HORIZONTAL SCROLL STYLES ---------- */
+
 		.featured-scroll {
 			display: flex;
 			flex-direction: row;
@@ -194,7 +215,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			padding: 1rem 0;
 			scroll-snap-type: x mandatory; /* optional snap */
 			-webkit-overflow-scrolling: touch;
-		} /* Each card takes up the viewport width but leaves a small gap. Use min-width: 90vw for a little peek of the next card, or 100vw for full-bleed */
+		}
+
+		
+
+		/* Each card takes up the viewport width but leaves a small gap.
+		   Use min-width: 90vw for a little peek of the next card, or 100vw for full-bleed */
 		.card,
 		.card1 {
 			flex: 0 0 90vw; /* do not shrink, fixed to 90% of viewport width */
@@ -220,6 +246,4 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			margin: 0;
 			color: var(--pink);
 			font-size: 1rem;
-		}
-	</style>
-</BaseLayout>
+		} -->
