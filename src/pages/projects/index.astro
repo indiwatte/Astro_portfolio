@@ -1,18 +1,20 @@
 ---
 import { getCollection } from "astro:content";
+import OverviewLayout from "../../layouts/OverviewLayout.astro";
+
 const projects = await getCollection("projects");
-import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Indi Watte | Projects">
-    <h1>Projects</h1>
-
-    <ul class="project-list">
+<OverviewLayout
+    title="Projects"
+    intro="Welcome to My Project overview, a collection of my works of my DEVINE journey"
+    >
+    <ul class="list">
         {
             projects.map((project) => (
-                <li class="project-item">
-                    <a <a href={`/projects/${project.id.replace('.md', '')}`} class="project-link">
-                        <h2 class="project-title">{project.data.title}</h2>
+                <li>
+                    <a href={`/projects/${project.id.replace(".md", "")}`}>
+                        <h2>{project.data.title}</h2>
                     </a>
                     <p class="description">{project.data.description}</p>
                     <p class="date">{project.data.date}</p>
@@ -82,3 +84,4 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         }
     </style>
 </BaseLayout>
+</OverviewLayout>

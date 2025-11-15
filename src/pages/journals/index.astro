@@ -1,37 +1,26 @@
 ---
 import { getCollection } from "astro:content";
+import OverviewLayout from "../../layouts/OverviewLayout.astro";
+
 const journals = await getCollection("journals");
-import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Indi Watte | Mind Drops">
-    <h1>Mind-drops</h1>
-    <p class="intro-description">
-        Welcome to My Mind Drops, a collection of small sparks of inspiration,
-        insights, and ideas I collect daily. Here you’ll find quotes,
-        reflections, and thoughts to fuel creativity, learning, and growth, one
-        drop at a time.
-    </p>
-
-    <ul class="blog-list">
+<OverviewLayout
+    title="Mind Drops"
+    intro="Welcome to My Mind Drops, a collection of inspiration and reflections."
+>
+    <ul class="list">
         {
             journals.map((journal) => (
-                <li class="blog-item">
-                    <a
-                        href={`/journals/${journal.id.replace(".md", "")}`}
-                        class="blog-link"
-                    >
-                        {" "}
-                        {/* id.replace('.md', '') creates a usable slug from the filename. */}
-                        <h2 class="blog-title">{journal.data.title}</h2>
+                <li>
+                    <a href={`/journals/${journal.id.replace(".md", "")}`}>
+                        <h2>{journal.data.title}</h2>
                     </a>
                     <p class="description">{journal.data.description}</p>
-                    <p class="date">{journal.data.date}</p>
+                    
                 </li>
             ))
         }
-
-        {console.log(journals)}
     </ul>
 
     <style>
@@ -104,3 +93,4 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         }
     </style>
 </BaseLayout>
+</OverviewLayout>

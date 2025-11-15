@@ -38,9 +38,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		<h2>Featured Projects</h2>
 		<p>Here you can already see some of my projects featured.</p>
 
-		<!-- Horizontal scroll area -->
 		<div class="featured-scroll" role="list">
-			<article class="card card1" role="listitem">
+			<article class="card" role="listitem">
 				<div class="text-bg">
 					<h3 class="card-title">rocket click game</h3>
 					<p class="card-description">
@@ -52,7 +51,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				</div>
 			</article>
 
-			<article class="card card2" role="listitem">
+			<article class="card" role="listitem">
 				<div class="text-bg">
 					<h3 class="card-title">Thrive Campaign</h3>
 					<p class="card-description">
@@ -64,7 +63,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				</div>
 			</article>
 
-			<article class="card card3" role="listitem">
+			<article class="card" role="listitem">
 				<div class="text-bg">
 					<h3 class="card-title">Project Three</h3>
 					<p class="card-description">
@@ -95,15 +94,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				"Segoe UI",
 				Roboto,
 				sans-serif;
-			margin: 0;
-			padding: 0;
 		}
-
-		/* 	.text-bg {
-			background-color: white;
-			max-width: fit-content;
-			padding: 1rem;
-		} */
 
 		.hero {
 			display: flex;
@@ -121,11 +112,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			text-decoration-color: var(--purple);
 			margin-bottom: -5rem;
 			z-index: 1;
+			min-width: auto;
 		}
 
 		.intro-image {
-			width: 600px;
-			height: 600px;
+			width: 100%;
+			max-width: 250px;
+			aspect-ratio: 1 / 1;
+			border-radius: 50%;
 			object-fit: cover;
 			position: absolute;
 			z-index: 2;
@@ -151,7 +145,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		p {
 			font-size: 1.2rem;
 			line-height: 1.6rem;
-			max-width: 800px;
+			width: 100%;
 		}
 
 		.devine-explanation {
@@ -175,6 +169,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			padding-top: 2rem;
 			padding: 8rem;
 		}
+
+		.introduction h2,
+		.devine-explanation h2 {
+			color: var(--orange);
+		}
+
+		.featured-projects h2 {
+			color: var(--pink);
+		}
+
 		.button,
 		.card-button {
 			display: inline-block;
@@ -183,13 +187,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			color: #000;
 			text-decoration: none;
 			font-weight: 600;
-			border-radius: 6px;
-			margin: 1.5rem;
-			transition:
-				transform 0.2s ease,
-				box-shadow 0.2s ease;
-			border: none;
-			cursor: pointer;
+			border-radius: 4px;
+			margin: 2rem 0;
 		}
 
 		.button:hover,
@@ -238,16 +237,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			flex-direction: column;
 			justify-content: center;
 		}
-
-		.card + .card {
-			/* small visual separation handled by gap already */
-		}
-
+	
 		.card-title {
 			font-size: 1.4rem;
 			margin: 0 0 0.5rem 0;
 		}
-
 		.card-description {
 			margin: 0;
 			color: var(--pink);

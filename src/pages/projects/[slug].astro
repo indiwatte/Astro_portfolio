@@ -1,19 +1,15 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content"; /* This gets a list of all your project markdown files */
+import DetailLayout from "../../layouts/DetailLayout.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const projects =
-        await getCollection(
-            "projects",
-        ); /* Astro will make one page for every project */
+    const projects = await getCollection("projects");
     return projects.map((p) => ({
         params: { slug: p.id.replace(".md", "") },
         props: { project: p },
     }));
 }
 
-/* Get the project that belongs to this page */
 const { project } = Astro.props;
 ---
 
@@ -51,39 +47,22 @@ const { project } = Astro.props;
         font-size: 2rem;
         font-weight: 700;
         margin-bottom: 1rem;
+<DetailLayout title={project.data.title}>
+    {
+        project.data.image && (
+            <img src={project.data.image} alt={project.data.title} />
+        )
     }
 
-    /* Basic spacing for normal text */
-    article p {
-        margin-bottom: 1rem;
+    <p>{project.data.description}</p>
+
+    {
+        project.data.date && (
+            <p>
+                <em>{project.data.date}</em>
+            </p>
+        )
     }
 
-    /* Headings inside project.markdown */
-    article h2 {
-        font-size: 1.6rem;
-        margin-top: 2rem;
-    }
-
-    article h3 {
-        font-size: 1.3rem;
-        margin-top: 1.5rem;
-    }
-
-    /* Lists */
-    article ul,
-    article ol {
-        padding-left: 1.2rem;
-    }
-
-    article li {
-        margin-bottom: 0.4rem;
-    }
-
-    /* Images */
-    article img {
-        width: 100%;
-        max-width: 100%;
-        border-radius: 4px;
-        margin: 1.5rem 0;
-    }
-</style>
+    <div set:html={project.body} />
+</DetailLayout>
